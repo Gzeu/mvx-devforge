@@ -1,0 +1,68 @@
+{
+  "name": "@mvx-devforge/core",
+  "version": "1.0.0",
+  "description": "🔨 MultiversX Developer Forge - Community toolkit cu NPM packages, smart contract utilities și GitHub Pages docs pentru ecosystem-ul MVX",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy:docs": "gh-pages -d docs/.vuepress/dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "multiversx",
+    "blockchain",
+    "smart-contracts",
+    "dapp",
+    "web3",
+    "mvx",
+    "elrond",
+    "cryptocurrency",
+    "defi",
+    "nft",
+    "sdk",
+    "utilities",
+    "developers",
+    "community"
+  ],
+  "author": "MultiversX Community <community@multiversx.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gzeu/mvx-devforge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gzeu/mvx-devforge/issues"
+  },
+  "homepage": "https://gzeu.github.io/mvx-devforge",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "gh-pages": "^6.0.0",
+    "vuepress": "^2.0.0"
+  },
+  "dependencies": {
+    "@multiversx/sdk-core": "^13.0.0",
+    "@multiversx/sdk-wallet": "^4.0.0",
+    "@multiversx/sdk-network-providers": "^3.0.0",
+    "axios": "^1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}
