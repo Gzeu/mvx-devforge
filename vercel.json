@@ -1,0 +1,117 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  
+  "env": {
+    "NEXT_PUBLIC_MVX_NETWORK": "devnet",
+    "NEXT_PUBLIC_API_URL": "https://devnet-api.multiversx.com",
+    "NEXT_PUBLIC_GATEWAY_URL": "https://devnet-gateway.multiversx.com",
+    "NEXT_PUBLIC_EXPLORER_URL": "https://devnet-explorer.multiversx.com",
+    "NEXT_PUBLIC_WALLET_CONNECT_BRIDGE": "https://bridge.walletconnect.org",
+    "NEXT_PUBLIC_WEB_WALLET_URL": "https://devnet-wallet.multiversx.com",
+    "NEXT_PUBLIC_XPORTAL_WALLET_URL": "https://maiar.page.link/?apn=com.elrond.maiar.wallet&isi=1519405832&ibi=com.elrond.maiar.wallet&link=https://xportal.com/",
+    "NODE_ENV": "production"
+  },
+  
+  "build": {
+    "env": {
+      "NEXT_TELEMETRY_DISABLED": "1",
+      "SKIP_ENV_VALIDATION": "1"
+    }
+  },
+  
+  "functions": {
+    "pages/api/**/*.js": {
+      "maxDuration": 10
+    },
+    "pages/api/**/*.ts": {
+      "maxDuration": 10
+    }
+  },
+  
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-Requested-With, Content-Type, Authorization"
+        }
+      ]
+    },
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  
+  "redirects": [
+    {
+      "source": "/docs",
+      "destination": "https://docs.multiversx.com",
+      "permanent": true
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/Gzeu/mvx-devforge",
+      "permanent": true
+    }
+  ],
+  
+  "rewrites": [
+    {
+      "source": "/api/mvx/(.*)",
+      "destination": "https://devnet-api.multiversx.com/$1"
+    },
+    {
+      "source": "/api/gateway/(.*)",
+      "destination": "https://devnet-gateway.multiversx.com/$1"
+    }
+  ],
+  
+  "regions": ["fra1"],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
